@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="easy.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+        <!-- Container for game  -->
+      <div class="stats-container">
+        <!-- Display the moves count -->
+        <div id="moves-count"></div>
+        <!-- Display the time limit -->
+        <div id="time"></div>
+      </div>
+      <!-- Container for the game grid -->
+      <div class="game-container"></div>
+      <!-- stop button of the game -->
+      <button id="stop" class="hide">Stop Game</button>
+    </div>
+    <div class="controls-container">
+        <!-- result for the game  -->
+      <p id="result"></p>
+      <!-- start button of the game  -->
+      <button id="start">Start Game</button>
+    </div>
+    <!-- redirect to another page -->
+    <div class="end-game-buttons">
+        <!-- button for go back to choose level page  -->
+        <a href="gamelevel.html"><button id="choose-level">Choose Level</button></a>
+        <!-- button for go back to home page  -->
+        <a href="index.html"><button id="go-home">Home</button></a>
+    </div>
+      
+    <!-- Script -->
+    <script src="app.js"></script>
+  </body>
+</html>

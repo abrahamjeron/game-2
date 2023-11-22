@@ -1,0 +1,224 @@
+/* body */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+body {
+    background-image: url('images/image\ for\ game.png');
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -1;
+    overflow: hidden;
+}
+/* #start{
+    background-image: url('images/image\ for\ game.png');
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -1;
+    overflow: hidden;
+} */
+/* game board */
+.wrapper {
+    box-sizing: content-box;
+    width: 60.9em;
+    padding: 2.5em 3em;
+    background-image: url("images/level 1 bg.jpg");
+    position: fixed;
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 600px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    border-radius: 0.6em;
+    box-shadow: 0 0.9em 2.8em rgba(86, 66, 0, 0.2);
+}
+.card-container.matched {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+  
+/* game box */
+.game-container {
+    position: relative;
+    width: 100%;
+    display: grid;
+    gap: 0.6em;
+    /* height: 100vh; */
+}
+.stats-container {
+    text-align: right;
+    margin-bottom: 1.2em;
+}
+.stats-container span {
+    font-weight: 600;
+}
+/* for card */
+.card-container {
+    position: relative;
+    width: 4.25em;
+    height: 4.25em;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    
+}
+.card-before,
+.card-after {
+    position: absolute;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #000000;
+    transition: transform 0.7s ease-out;
+    backface-visibility: hidden;
+}
+.card-before {
+    background-color: #000000;
+    font-size: 2.8em;
+    font-weight: 600;
+}
+.card-after {
+    background-color: #ffffff;
+    transform: rotateY(180deg);
+}
+.card-container.flipped .card-before {
+    transform: rotateY(180deg);
+}
+.card-container.flipped .card-after {
+    transform: rotateY(0deg);
+}
+.controls-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #f4c531;
+    top: 0;
+}
+button {
+    border: none;
+    border-radius: 0.3em;
+    padding: 1em 1.5em;
+    cursor: pointer;
+}
+/* start button*/
+#stop {
+    font-size: 1.1em;
+    display: block;
+    margin: 1.1em auto 0 auto;
+    background-color: #000000;
+    color: #ffffff;
+}
+.controls-container button {
+    font-size: 1.3em;
+    box-shadow: 0 0.6em 2em rgba(86, 66, 0, 0.2);
+}
+.hide {
+    display: none;
+}
+/* result page */
+#result {
+    text-align: center;
+}
+#result h2 {
+    font-size: 2.5em;
+}
+#result h4 {
+    font-size: 1.8em;
+    margin: 0.6em 0 1em 0;
+}
+/* for before card image to adjust the CARD LOGO Image  */
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+  
+.card-container.flipped .card {
+    transform: rotateY(180deg);
+}
+  
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+  
+.card-front {
+    transform: rotateY(0deg);
+}
+  
+.card-back {
+    transform: rotateY(180deg);
+}
+  
+.card-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.end-game-buttons {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 15px; 
+    width: 100%;
+}
+  /* button for redirect to another page */
+#choose-level,
+#go-home {
+    text-align: center;
+    font-size: 25px;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 35px;
+    background-color: rgb(150, 255, 127);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#choose-level:hover {
+    background-color: #009a27;
+}
+#go-home:hover {
+    background-color: #009a27;
+}
+
+  
+#choose-level {
+    order: 2; 
+}
+  
+#go-home {
+    order: 1;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in page</title>
+    <link rel="stylesheet" href="signin.css">
+    <!-- <script src="signin.js"></script> -->
+</head>
+<body>
+    <!-- form -->
+    <div class="container">
+        <form action="#" method="post" id="signInForm">
+            <!-- Name of the form -->
+            <header>
+                MemoryMaze <br>Sign In
+            </header>
+            <!-- details -->
+            <label for="username">Name:</label>
+            <input type="text" id="username" name="username" placeholder="Enter Your Name" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label>Gender:</label>
+                    <label for="male">
+                        <input type="radio" id="male" name="gender" value="male"> Male
+                    </label>
+
+                    <label for="female">
+                        <input type="radio" id="female" name="gender" value="female"> Female
+                    </label>
+
+            <a href="./brief.html">submit</a>
+        </form>
+    </div>
+    <script src="signin.js"></script>
+</body>
+</html>
