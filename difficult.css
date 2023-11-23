@@ -81,8 +81,8 @@ body {
 /* for card */
 .card-container {
     position: relative;
-    width: 4.25em;
-    height: 3.25em;
+    width: 0.05em;
+    height: 0.05em;
     cursor: pointer;
     transition: opacity 0.5s ease-in-out;
     opacity: 1;
