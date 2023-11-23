@@ -57,8 +57,8 @@ const timeGenerator = () => {
   seconds += 1;
 
   // Check if time is up (3 minutes)
-  if (minutes === 3 && seconds === 0) {
-    result.innerHTML = `<h2>Time's up!</h2><h4>Try again!</h4>`;
+  if (minutes === 10 && seconds === 0) {
+    result.innerHTML = `<h2 style="color: white;">Time's up!</h2><h4 style="color: white;">Try again!</h4>`;
     stopGame();
     return;
   }
@@ -78,11 +78,11 @@ const timeGenerator = () => {
 // For calculating moves
 const movesCounter = () => {
   movesCount += 1;
-  moves.innerHTML = `<span>Moves:</span>${movesCount}`;
+  moves.innerHTML = `<span  style="color: white;">Moves:</span>${movesCount}`;
 
   // Check if moves count reaches a certain limit (e.g., 23 moves)
-  if (movesCount === 40) {
-    result.innerHTML = `<h2>Too many moves!</h2><h4>Try again!</h4>`;
+  if (movesCount === 75) {
+    result.innerHTML = `<h2 style="color: white;">Too many moves!</h2><h4 style="color: white;">Try again!</h4>`;
     stopGame();
   }
 };
@@ -157,16 +157,19 @@ const matrixGenerator = (cardValues, size = 8) => {
           let secondCardValue = card.getAttribute("data-card-value");
           if (firstCardValue == secondCardValue) {
             // If both cards match, add matched class so these cards would be ignored next time
-            firstCard.classList.add("matched");
-            secondCard.classList.add("matched");
+            
+            firstCard.style.transition = "0.5s";
+            secondCard.style.transition = "0.5s";
+            firstCard.style.transform = "scale(0)";
+            secondCard.style.transform = "scale(0)";
             // Set firstCard to false since the next card would be the first now
             firstCard = false;
             // WinCount increment as the user found a correct match
             winCount += 1;
             // Check if winCount == half of cardValues
             if (winCount == Math.floor(cardValues.length / 2)) {
-              result.innerHTML = `<h2>You Won</h2>
-          <h4>Moves: ${movesCount}</h4>`;
+              result.innerHTML = `<h1 style="color: white;" >congratulations</h1> <br><h2 style="color: white;">You Won</h2>
+          <h4 style="color: white;">Moves: ${movesCount}</h4>`;
               stopGame();
             }
           } else {
@@ -202,18 +205,16 @@ startButton.addEventListener("click", () => {
     moves.innerHTML = `<span style="color: white;">Moves:</span> ${movesCount}`;
     initializer();
   });
-  
-  //Stop game
-  stopButton.addEventListener(
-    "click",
-    (stopGame = () => {
-      controls.classList.remove("hide");
-      stopButton.classList.add("hide");
-      startButton.classList.remove("hide");
-      clearInterval(interval);
-    })
-  );
-  
+  // Stop game
+stopButton.addEventListener("click", stopGame);
+
+function stopGame() {
+  controls.classList.remove("hide");
+  stopButton.classList.add("hide");
+  startButton.classList.remove("hide");
+  clearInterval(interval);
+}
+
   //Initialize values and func calls
   const initializer = () => {
     result.innerText = "";
@@ -222,3 +223,63 @@ startButton.addEventListener("click", () => {
     console.log(cardValues);
     matrixGenerator(cardValues);
   };
+
+  const gameAudio = document.getElementById("gameAudio");
+  const audioToggleBtn = document.getElementById("audioToggle");
+  
+  // Function to play the audio
+  const playAudio = () => {
+    gameAudio.play();
+  };
+  
+  // Function to pause the audio
+  const pauseAudio = () => {
+    gameAudio.pause();
+  };
+  
+  // Function to toggle play/pause
+  const toggleAudio = () => {
+    if (gameAudio.paused) {
+      playAudio();
+    } else {
+      pauseAudio();
+    }
+  };
+  
+  // Event listener for when the audio ends, restart it
+  gameAudio.addEventListener("ended", () => {
+    playAudio();
+  });
+  
+  // Event listener for the button to toggle audio
+  audioToggleBtn.addEventListener("click", () => {
+    toggleAudio();
+    // Save the audio state to sessionStorage
+    sessionStorage.setItem("audioState", gameAudio.paused ? "off" : "on");
+  });
+  
+  // Event listener for when the page is unloaded (e.g., when navigating to another page)
+  window.addEventListener("beforeunload", () => {
+    // Save the audio playback position to sessionStorage
+    sessionStorage.setItem("audioPlaybackPosition", gameAudio.currentTime);
+  });
+  
+  // Start playing the audio when the page loads
+  if (sessionStorage.getItem("audioState") === "on") {
+    playAudio();
+  }
+  
+  // Restore the audio playback position from sessionStorage
+  const savedPosition = sessionStorage.getItem("audioPlaybackPosition");
+  if (savedPosition) {
+    gameAudio.currentTime = parseFloat(savedPosition);
+  }
+  
+  // Stop the audio when the game stops
+  stopButton.addEventListener("click", () => {
+    controls.classList.remove("hide");
+    stopButton.classList.add("hide");
+    startButton.classList.remove("hide");
+    clearInterval(interval);
+    pauseAudio();
+  });

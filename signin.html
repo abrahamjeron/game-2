@@ -10,7 +10,7 @@
 <body>
     <!-- form -->
     <div class="container">
-        <form action="#" method="post" id="signInForm">
+        <form action="brief.html" method="post" id="signInForm" >
             <!-- Name of the form -->
             <header>
                 MemoryMaze <br>Sign In
@@ -18,22 +18,36 @@
             <!-- details -->
             <label for="username">Name:</label>
             <input type="text" id="username" name="username" placeholder="Enter Your Name" required>
-
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required>
-
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
+    
             <label>Gender:</label>
-                    <label for="male">
-                        <input type="radio" id="male" name="gender" value="male"> Male
-                    </label>
-
-                    <label for="female">
-                        <input type="radio" id="female" name="gender" value="female"> Female
-                    </label>
-
-            <a href="./brief.html">submit</a>
+            <label for="male">
+                <input type="radio" id="male" name="gender" value="male" required> Male
+            </label>
+    
+            <label for="female">
+                <input type="radio" id="female" name="gender" value="female" required> Female
+            </label>
+    
+            <label for="others">
+                <input type="radio" id="others" name="gender" value="others" required> Others
+            </label>
+    
+            <a href="brief.html"><input type="submit" value="Submit"></a>
         </form>
     </div>
+    
+
+    <button id="audioToggle">Sound On/Off</button>
+
+    <audio id="gameAudio" loop>
+        <source src="game theme/videoplayback.weba" type="audio/mp3">
+    </audio>
+    <audio id="gameAudio" loop volume="0.5">
+        <source src="game theme/videoplayback.weba" type="audio/mp3">
+    </audio>
     <script src="signin.js"></script>
 </body>
 </html>
