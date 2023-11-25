@@ -14,6 +14,9 @@ body {
     background-attachment: fixed;
     z-index: -1;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #audioToggle {
     position: fixed;
@@ -72,7 +75,7 @@ input[type="submit"] {
     padding: 15px 30px;
     border: none;
     border-radius: 10px;
-    background-color: rgb(11, 131, 11);
+    background-color: rgb(116, 235, 116);
     color: #000;
     cursor: pointer;
     margin-right: 10px;
@@ -85,10 +88,11 @@ input[type="submit"]:hover {
     color: #000000;
 }
 
-
+/* responsive style  */
 @media only screen and (max-width: 480px) {
     .container {
-        max-width: 90%;
+        top: 50%;
+        /* max-width: 90%; */
         display: flex;
         justify-content: center;
         align-items: center;

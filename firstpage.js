@@ -32,7 +32,7 @@ audioToggleBtn.addEventListener("click", () => {
   sessionStorage.setItem("audioState", gameAudio.paused ? "off" : "on");
 });
 
-// Event listener for when the page is unloaded (e.g., when navigating to another page)
+// Event listener for when the page is unloaded 
 window.addEventListener("beforeunload", () => {
   // Save the audio playback position to sessionStorage
   sessionStorage.setItem("audioPlaybackPosition", gameAudio.currentTime);

@@ -1,6 +1,7 @@
 *{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+/* body */
 body{
     background-image: url('images/title\ image\ .jpg');
     position: fixed;
@@ -14,6 +15,7 @@ body{
     background-attachment: fixed;
     z-index: -1;
 }
+/* adjusting the sound box  */
 #audioToggle {
     position: fixed;
     top: 10px;
@@ -55,6 +57,7 @@ h2{
     justify-content: center;
     bottom: 100px;
 }
+/* start button  */
 #startbutton {
     text-align: center;
     margin-bottom: 70px;
@@ -75,23 +78,28 @@ h2{
 /* Responsive styles */
 @media only screen and (max-width: 768px) {
     h1 {
-        font-size: 57px;
-        margin-bottom: 30px;
-        position: relative;
-        top: 140px;
+        font-size: 60px;
+        margin-bottom: 50%;
+        line-height: 4.5;
     }
 
     h2 {
         font-size: large;
-        text-align: center;
-        
-        
+        margin-bottom: 20px;
+        line-height: 14.5;
     }
 
     #startbutton {
+        position: absolute;
         font-size: 18px;
-        padding: 15px 30px;
-        position: relative;
-        top: 180px;
+        padding: 12px 35px;
+        border-radius: 10px;
+        left: 195px;
+    }
+    .container {
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+        transform: translateY(-50%);
     }
 }

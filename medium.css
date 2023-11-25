@@ -44,9 +44,9 @@ body {
     box-sizing: content-box;
     width: 39.9em;
     padding: 2.5em 3em;
-    background-image: url("images/level 1 bg.jpg");
-    position: fixed;
-    background-size: contain; 
+    background-image: url("images/medium\ BG.jpg");
+    background-size: cover; 
+    background-position: 10% 10%; 
     background-position: center;
     background-repeat: no-repeat;
     width: 500px;
@@ -234,41 +234,64 @@ body, html {
     height: 100%;
     margin: 0;
     overflow: hidden;
-  }
+}
   
-  .game-container {
-    min-height: 400px; /* Set a minimum height for the game container */
+.game-container {
+    min-height: 400px; 
     width: 100%;
     margin: 20px auto;
-    overflow: hidden; /* Prevent content from overflowing */
-  }
+    overflow: hidden; 
+}
   
-  .card-container {
+.card-container {
     position: relative;
     width: 100%;
-    padding-bottom: 100%; /* Maintain a square aspect ratio for the cards */
-  }
+    padding-bottom: 100%; 
+}
   
-  .card {
+.card {
     position: absolute;
     width: 100%;
     height: 100%;
-  }
-  
-  .card .card-front,
-  .card .card-back {
+}
+.card .card-front,
+.card .card-back {
     width: 100%;
     height: 100%;
-  }
+}
   
-  .card .card-logo {
+.card .card-logo {
     max-width: 100%;
     max-height: 100%;
-  }
+}
   
-  .card .image {
+.card .image {
     max-width: 100%;
     max-height: 100%;
-  }
-  
-  /* Add other styles as needed */
+}
+/* responsive design */
+@media only screen and (max-width: 768px) {
+    .wrapper{
+        width: 19.87em;
+        height: 31.87em;
+
+    }
+    .card-container {
+        position: relative;
+        width: 2.85em;
+        height: 2.85em;
+        
+    }
+    #choose-level,
+    #go-home {
+    text-align: center;
+    font-size: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 45px;
+    background-color: rgb(150, 255, 127);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    }
+}

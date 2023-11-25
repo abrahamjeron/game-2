@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+/* body */
 body {
     background-image: url('images/image\ for\ game.png');
     position: fixed;
@@ -19,7 +20,7 @@ body {
     z-index: -1;
     overflow: hidden;
 }
-
+/* sound button */
 #audioToggle {
     position: fixed;
     top: 10px;
@@ -34,21 +35,19 @@ body {
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
-
 #audioToggle:hover {
     background-color: #009a27;
     color: #fff;
-}
+} 
 
-  
 /* game board */
 .wrapper {
     box-sizing: content-box;
     width: 26.87em;
     padding: 2.5em 3em;
-    background-image: url("images/level 1 bg.jpg");
-    background-size: contain; 
-    background-position: center;
+    background-image: url("images/easy\ BG.jpg");
+    background-size: cover; 
+    background-position: 10% 10%;
     background-repeat: no-repeat;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -61,8 +60,7 @@ body {
     display: none;
     opacity: 0;
     pointer-events: none;
-}
-  
+}  
 /* game box */
 .game-container {
     position: relative;
@@ -218,9 +216,7 @@ button {
 }
 #go-home:hover {
     background-color: #009a27;
-}
-
-  
+}  
 #choose-level {
     order: 2; 
 }
@@ -235,16 +231,16 @@ body, html {
   }
   
   .game-container {
-    min-height: 400px; /* Set a minimum height for the game container */
+    min-height: 400px; 
     width: 100%;
     margin: 20px auto;
-    overflow: hidden; /* Prevent content from overflowing */
+    overflow: hidden;
   }
   
   .card-container {
     position: relative;
     width: 100%;
-    padding-bottom: 100%; /* Maintain a square aspect ratio for the cards */
+    padding-bottom: 100%; 
   }
   
   .card {
@@ -268,5 +264,29 @@ body, html {
     max-width: 100%;
     max-height: 100%;
   }
-  
-  /* Add other styles as needed */
+  /* responsive design */
+  @media only screen and (max-width: 768px) {
+    .wrapper{
+        width: 18.87em;
+        height: 31.87em;
+
+    }
+    .card-container {
+        position: relative;
+        width: 4.25em;
+        height: 4.25em;
+        
+    }
+    #choose-level,
+    #go-home {
+    text-align: center;
+    font-size: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 45px;
+    background-color: rgb(150, 255, 127);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    }
+  }

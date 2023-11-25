@@ -1,3 +1,4 @@
+/* body */
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
@@ -29,7 +30,6 @@ body {
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
-
 #audioToggle:hover {
     background-color: #009a27;
     color: #fff;
@@ -42,16 +42,14 @@ h1 {
     margin-top: 50px;
     text-shadow: 2px 2px 4px rgba(197, 203, 35, 0.8);
 }
-
-
-
+/* box level */
 .container2,
 .container3,
 .container4 {
     text-align: center;
     margin-top: 20px;
 }
-
+/* styling the box  */
 #easylevel,
 #mediumlevel,
 #difficultlevel {
@@ -71,4 +69,18 @@ h1 {
 #difficultlevel:hover {
     background-color: #009a27;
     color: #fff;
+}
+/* responsive design */
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 40px;
+        margin-top: 150px;
+    }
+
+    #easylevel,
+    #mediumlevel,
+    #difficultlevel {
+        font-size: 20px;
+        padding: 10px 20px;
+    }
 }

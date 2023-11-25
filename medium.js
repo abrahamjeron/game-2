@@ -13,26 +13,48 @@ let secondCard = false;
 // Items array
 const items = [
     { name: "img1", image: "images/medium 2.1.jpeg" },
-    { name: "img2", image: "images/medium 2.2.jpeg" },
-    { name: "img3", image: "images/medium 2.3.jpeg" },
-    { name: "img4", image: "images/medium 2.4.jpeg" },
-    { name: "img5", image: "images/medium 2.5.jpeg" },
-    { name: "img6", image: "images/medium 2.6.jpeg" },
-    { name: "img7", image: "images/medium 2.7.jpeg" },
-    { name: "img8", image: "images/medium 2.8.jpeg" },
-    { name: "img9", image: "images/medium 2.9.jpeg" },
-    { name: "img10", image: "images/medium 2.10.jpeg" },
-    { name: "img11", image: "images/medium 2.11.jpeg" },
-    { name: "img12", image: "images/medium 2.12.jpeg" },
+    { name: "img2", image: "images/medium 2.2.png" },
+    { name: "img3", image: "images/medium 2.3.png" },
+    { name: "img4", image: "images/medium 2.4.png" },
+    { name: "img5", image: "images/medium 2.5.png" },
+    { name: "img6", image: "images/medium 2.6.png" },
+    { name: "img7", image: "images/medium 2.7.png" },
+    { name: "img8", image: "images/medium 2.8.png" },
+    { name: "img9", image: "images/medium 2.9.png" },
+    { name: "img10", image: "images/medium 2.10.png" },
+    { name: "img11", image: "images/medium 2.11.png" },
+    { name: "img12", image: "images/medium 2.12.png" },
     { name: "img13", image: "images/medium 2.13.jpeg" },
     { name: "img14", image: "images/medium 2.14.jpeg" },
     { name: "img15", image: "images/medium 2.15.jpeg" },
     { name: "img16", image: "images/medium 2.16.jpeg" },
     { name: "img17", image: "images/medium 2.17.jpeg" },
     { name: "img18", image: "images/medium 2.18.jpeg" },
-    
+    { name: "img19", image: "images/difficult 1.1.jpeg" },
+    { name: "img20", image: "images/difficult 1.12.jpeg" },
+    { name: "img21", image: "images/difficult 1.18.jpeg" },
+    { name: "img22", image: "images/difficult 1.4.jpeg" },
+    { name: "img23", image: "images/difficult 1.10.jpeg" },
   ];
-  
+  // for some is not working for me 
+  function checkImageAvailability() {
+    items.forEach(item => {
+        const imgElement = new Image();
+        imgElement.src = item.image;
+
+        imgElement.onload = function() {
+            console.log(`Image loaded successfully: ${item.name}`);
+        };
+
+        imgElement.onerror = function() {
+            console.error(`Error loading image: ${item.name} - ${item.image}`);
+        };
+    });
+}
+
+// Call the function to check image availability
+checkImageAvailability();
+
 
 let movesCount = 0;
 let seconds = 0;
@@ -43,9 +65,9 @@ let firstCardValue;
 const timeGenerator = () => {
   seconds += 1;
 
-  // Check if time is up (3 minutes)
+  // Check if time is up 
   if (minutes === 3 && seconds === 0) {
-    result.innerHTML = `<h2 style="color: white;">Time's up!</h2><h4 style="color: white;">Try again!</h4>`;
+    result.innerHTML = `<h2 style="font-size: 40px; color: red; text-shadow: 2px 2px 4px rgba(197, 203, 35, 0.8);">Time's up!</h2><h4 style="font-size: 20px; color: red; text-shadow: 2px 2px 4px rgba(197, 203, 35, 0.8);">Try again!</h4>`;
     stopGame();
     return;
   }
@@ -59,17 +81,17 @@ const timeGenerator = () => {
   // format time before displaying
   let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
   let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
-  timeValue.innerHTML = `<span style="color: white;" >Time:</span>${minutesValue}:${secondsValue}`;
+  timeValue.innerHTML = `<span style="color: black;" >Time:</span>${minutesValue}:${secondsValue}`;
 };
 
 // For calculating moves
 const movesCounter = () => {
   movesCount += 1;
-  moves.innerHTML = `<span style="color: white;">Moves:</span>${movesCount}`;
+  moves.innerHTML = `<span style="color: black;">Moves:</span>${movesCount}`;
 
-  // Check if moves count reaches a certain limit (e.g., 23 moves)
+  // Check if moves count reaches a certain limit 
   if (movesCount === 30) {
-    result.innerHTML = `<h2 style="color: white;">Too many moves!</h2><h4 style="color: white;">Try again!</h4>`;
+    result.innerHTML = `<h2 style="font-size: 60px; color: red; text-shadow: 2px 2px 4px rgba(197, 203, 35, 0.8);">Too many moves!</h2><h4 style="font-size: 40px; color: red; text-shadow: 2px 2px 4px rgba(197, 203, 35, 0.8);">Try again!</h4>`;
     stopGame();
   }
 };
@@ -92,6 +114,15 @@ const generateRandom = (size = 6) => {
 
   return cardValues;
 };
+
+function updateCardVisibility(cardName) {
+  const cardsWithThisImage = document.querySelectorAll(`[data-card-value="${cardName}"]`);
+
+  cardsWithThisImage.forEach(card => {
+    // Make the card visible
+    card.style.opacity = 1;
+  });
+}
 
 const matrixGenerator = (cardValues, size = 6) => {
   gameContainer.innerHTML = "";
@@ -119,6 +150,7 @@ const matrixGenerator = (cardValues, size = 6) => {
      </div>
      `;
   }
+  checkImageAvailability();
   // Grid
   gameContainer.style.gridTemplateColumns = `repeat(${size}, auto)`;
 
@@ -155,8 +187,8 @@ const matrixGenerator = (cardValues, size = 6) => {
             winCount += 1;
             // Check if winCount == half of cardValues
             if (winCount == Math.floor(cardValues.length / 2)) {
-              result.innerHTML = ` <h1 style="color: white;" >congratulations</h1> <br> <h2 style="color: white;">You Won</h2>
-          <h4 style="color: white;">Moves: ${movesCount}</h4>`;
+              result.innerHTML = `<h1 style="font-size: 60px; color: red; text-shadow: 2px 2px 4px rgba(197, 203, 35, 0.8);" >congratulations</h1> <br> <h2 style="font-size: 40px; color: red; text-shadow: 2px 2px 4px rgba(197, 203, 35, 0.8);">You Won The level</h2>
+              <h4 style="font-size: 30px; color: red; text-shadow: 2px 2px 4px rgba(197, 203, 35, 0.8);">Moves: ${movesCount}</h4>`;
               stopGame();
             }
           } else {
@@ -176,6 +208,7 @@ const matrixGenerator = (cardValues, size = 6) => {
   });
 };
 
+
 // Start game
 startButton.addEventListener("click", () => {
     movesCount = 0;
@@ -188,7 +221,7 @@ startButton.addEventListener("click", () => {
     //Start timer
     interval = setInterval(timeGenerator, 1000);
     //initial moves the player clicked
-    moves.innerHTML = `<span style="color: white;">Moves:</span> ${movesCount}`;
+    moves.innerHTML = `<span style="color: black;">Moves:</span> ${movesCount}`;
     initializer();
   });
   
